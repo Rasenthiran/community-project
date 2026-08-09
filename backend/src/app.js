@@ -1,18 +1,33 @@
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
+// src/app.js
+// Express app setup: global middleware + route registration.
+import express from 'express';
+import cors from 'cors';
+
+import authRoutes from './routes/authRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
+import doctorRoutes from './routes/doctorRoutes.js';
+import { errorHandler, notFound } from './middleware/errorHandler.js';
 
 const app = express();
 
-// Middleware
+// Global middleware
 app.use(cors());
 app.use(express.json());
 
-// Test route
-app.get("/", (req, res) => {
-    res.json({
-        message: "Community Project API is running"
-    });
+// Health check
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ success: true, message: 'API is healthy' });
 });
 
-module.exports = app;
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/doctors', doctorRoutes);
+
+// 404 + centralized error handling (must be last)
+app.use(notFound);
+app.use(errorHandler);
+
+export default app;
