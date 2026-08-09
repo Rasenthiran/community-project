@@ -55,23 +55,4 @@ export const loginValidator = [
   body('password').notEmpty().withMessage('Password is required'),
 ];
 
-export const changePasswordValidator = [
-  body('currentPassword').notEmpty().withMessage('Current password is required'),
-  body('newPassword')
-    .isLength({ min: 8 })
-    .withMessage('New password must be at least 8 characters')
-    .matches(/[A-Z]/)
-    .withMessage('New password must contain an uppercase letter')
-    .matches(/[a-z]/)
-    .withMessage('New password must contain a lowercase letter')
-    .matches(/\d/)
-    .withMessage('New password must contain a number')
-    .matches(/[^A-Za-z0-9]/)
-    .withMessage('New password must contain a special character'),
-  body('confirmPassword').custom((value, { req }) => {
-    if (value !== req.body.newPassword) {
-      throw new Error('Passwords do not match');
-    }
-    return true;
-  }),
-];
+

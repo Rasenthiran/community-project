@@ -1,5 +1,5 @@
 // src/routes/doctorRoutes.js
-// Public doctor browsing + admin doctor management routes.
+// Public doctor browsing + a doctor's own profile + admin doctor management.
 import { Router } from 'express';
 import {
   getAllDoctors,
@@ -8,18 +8,32 @@ import {
   updateDoctor,
   deleteDoctor,
   setDoctorStatus,
+  getMyDoctorProfile,
+  updateMyDoctorProfile,
 } from '../controllers/doctorController.js';
 import { authenticate } from '../middleware/authMiddleware.js';
 import { requireRole } from '../middleware/roleMiddleware.js';
 import {
   createDoctorValidator,
   updateDoctorValidator,
+  updateOwnDoctorValidator,
   doctorStatusValidator,
   listDoctorsQueryValidator,
 } from '../validators/doctorValidator.js';
 import { validateRequest } from '../middleware/validateRequest.js';
 
 const router = Router();
+
+// Doctor's own profile — must come before '/:id' so 'me' isn't parsed as an ObjectId.
+router.get('/me', authenticate, requireRole('doctor'), getMyDoctorProfile);
+router.put(
+  '/me',
+  authenticate,
+  requireRole('doctor'),
+  updateOwnDoctorValidator,
+  validateRequest,
+  updateMyDoctorProfile
+);
 
 // Public
 router.get('/', listDoctorsQueryValidator, validateRequest, getAllDoctors);

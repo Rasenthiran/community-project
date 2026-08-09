@@ -4,10 +4,11 @@ import { Router } from 'express';
 import { register, login } from '../controllers/authController.js';
 import { registerValidator, loginValidator } from '../validators/authValidator.js';
 import { validateRequest } from '../middleware/validateRequest.js';
+import { authLimiter } from '../middleware/rateLimiter.js';
 
 const router = Router();
 
-router.post('/register', registerValidator, validateRequest, register);
-router.post('/login', loginValidator, validateRequest, login);
+router.post('/register', authLimiter, registerValidator, validateRequest, register);
+router.post('/login', authLimiter, loginValidator, validateRequest, login);
 
 export default router;

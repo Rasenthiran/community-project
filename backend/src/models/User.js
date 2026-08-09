@@ -57,11 +57,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Password is required'],
       minlength: 8,
-      select: true, // controlled at query-time; hidden from JSON output below
+      select: false, // never returned by default; explicitly selected with .select('+password') for login/verification
     },
     role: {
       type: String,
-      enum: ['patient', 'admin'],
+      enum: ['patient', 'doctor', 'admin'],
       default: 'patient',
     },
     isActive: {

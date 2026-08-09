@@ -1,5 +1,7 @@
 // src/models/Doctor.js
 // Mongoose schema only — no business logic here.
+// A Doctor is a professional profile attached 1:1 to a User (role: 'doctor').
+// Identity fields (name, email, phone, gender) live on User — not duplicated here.
 import mongoose from 'mongoose';
 
 const DAYS_OF_WEEK = [
@@ -14,27 +16,16 @@ const DAYS_OF_WEEK = [
 
 const doctorSchema = new mongoose.Schema(
   {
-    fullName: {
-      type: String,
-      required: [true, 'Full name is required'],
-      trim: true,
-    },
-    gender: {
-      type: String,
-      enum: ['male', 'female', 'other'],
-    },
-    email: {
-      type: String,
-      lowercase: true,
-      trim: true,
-    },
-    phoneNumber: {
-      type: String,
-      trim: true,
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: [true, 'userId is required'],
+      unique: true,
     },
     specialization: {
       type: String,
       required: [true, 'Specialization is required'],
+      trim: true,
     },
     qualifications: {
       type: [String],
@@ -44,6 +35,7 @@ const doctorSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Registration number is required'],
       unique: true,
+      trim: true,
     },
     yearsOfExperience: {
       type: Number,
@@ -66,15 +58,38 @@ const doctorSchema = new mongoose.Schema(
     department: {
       type: String,
       default: '',
+      trim: true,
     },
+    // Availability: a single working window applied to each available day.
+    // Kept intentionally simple (no per-day overrides / recurring schedule engine)
+    // per the "don't over-engineer" constraint — this is the first iteration.
     availableDays: {
       type: [String],
       enum: DAYS_OF_WEEK,
       default: [],
     },
-    availableTime: {
-      type: String,
-      default: '',
+    workingHours: {
+      startTime: {
+        type: String, // 'HH:mm', 24h, in system timezone (Asia/Colombo)
+        default: null,
+        validate: {
+          validator: (v) => v === null || /^([01]\d|2[0-3]):([0-5]\d)$/.test(v),
+          message: 'startTime must be in HH:mm 24h format',
+        },
+      },
+      endTime: {
+        type: String,
+        default: null,
+        validate: {
+          validator: (v) => v === null || /^([01]\d|2[0-3]):([0-5]\d)$/.test(v),
+          message: 'endTime must be in HH:mm 24h format',
+        },
+      },
+    },
+    slotDurationMinutes: {
+      type: Number,
+      default: 30,
+      min: [5, 'Slot duration must be at least 5 minutes'],
     },
     profileImage: {
       type: String,
@@ -88,7 +103,9 @@ const doctorSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-doctorSchema.index({ fullName: 'text', specialization: 'text', department: 'text' });
+doctorSchema.index({ specialization: 'text', department: 'text' });
+
+export const DAYS = DAYS_OF_WEEK;
 
 const Doctor = mongoose.model('Doctor', doctorSchema);
 export default Doctor;

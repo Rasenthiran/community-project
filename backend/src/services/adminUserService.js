@@ -4,7 +4,11 @@ import User from '../models/User.js';
 import { hashPassword } from '../utils/hashPassword.js';
 import { ApiError } from './authService.js';
 
-const ALLOWED_ADMIN_UPDATE_FIELDS = ['fullName', 'phoneNumber', 'address', 'city', 'role', 'isActive'];
+// Deliberately excludes 'role': role is never changed through this generic update path.
+// It's set once at creation — 'patient' by public registration, 'doctor' only via the
+// transactional createDoctor flow, 'admin' only via the seeder. This closes off the
+// otherwise-easy path of promoting any user to admin through a routine profile edit.
+const ALLOWED_ADMIN_UPDATE_FIELDS = ['fullName', 'phoneNumber', 'address', 'city', 'isActive'];
 
 export const listUsers = async ({ page = 1, limit = 20, search, role, isActive }) => {
   const filter = {};

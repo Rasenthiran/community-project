@@ -63,3 +63,21 @@ export const setDoctorStatus = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getMyDoctorProfile = async (req, res, next) => {
+  try {
+    const doctor = await doctorService.getDoctorProfileByUserId(req.user.userId);
+    return successResponse(res, 200, 'Profile fetched successfully', doctor);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateMyDoctorProfile = async (req, res, next) => {
+  try {
+    const doctor = await doctorService.updateOwnDoctorProfile(req.user.userId, req.body);
+    return successResponse(res, 200, 'Profile updated successfully', doctor);
+  } catch (error) {
+    next(error);
+  }
+};

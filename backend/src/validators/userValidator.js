@@ -17,8 +17,28 @@ export const adminUpdateUserValidator = [
   body('phoneNumber').optional().trim().matches(/^\d{10,15}$/).withMessage('Phone number must be 10-15 digits'),
   body('address').optional().trim().notEmpty(),
   body('city').optional().trim().notEmpty(),
-  body('role').optional().isIn(['patient', 'admin']).withMessage('Role must be patient or admin'),
   body('isActive').optional().isBoolean().withMessage('isActive must be boolean'),
+];
+
+export const changePasswordValidator = [
+  body('currentPassword').notEmpty().withMessage('Current password is required'),
+  body('newPassword')
+    .isLength({ min: 8 })
+    .withMessage('New password must be at least 8 characters')
+    .matches(/[A-Z]/)
+    .withMessage('New password must contain an uppercase letter')
+    .matches(/[a-z]/)
+    .withMessage('New password must contain a lowercase letter')
+    .matches(/\d/)
+    .withMessage('New password must contain a number')
+    .matches(/[^A-Za-z0-9]/)
+    .withMessage('New password must contain a special character'),
+  body('confirmPassword').custom((value, { req }) => {
+    if (value !== req.body.newPassword) {
+      throw new Error('Passwords do not match');
+    }
+    return true;
+  }),
 ];
 
 export const resetPasswordValidator = [
@@ -38,32 +58,6 @@ export const resetPasswordValidator = [
 export const listUsersQueryValidator = [
   query('page').optional().isInt({ min: 1 }).withMessage('page must be a positive integer'),
   query('limit').optional().isInt({ min: 1, max: 100 }).withMessage('limit must be between 1 and 100'),
-  query('role').optional().isIn(['patient', 'admin']).withMessage('role must be patient or admin'),
+  query('role').optional().isIn(['patient', 'doctor', 'admin']).withMessage('role must be patient, doctor, or admin'),
   query('isActive').optional().isBoolean().withMessage('isActive must be boolean'),
-];
-
-export const changePasswordValidator = [
-  body('currentPassword')
-    .notEmpty()
-    .withMessage('Current password is required'),
-
-  body('newPassword')
-    .isLength({ min: 8 })
-    .withMessage('Password must be at least 8 characters')
-    .matches(/[A-Z]/)
-    .withMessage('Password must contain an uppercase letter')
-    .matches(/[a-z]/)
-    .withMessage('Password must contain a lowercase letter')
-    .matches(/\\d/)
-    .withMessage('Password must contain a number')
-    .matches(/[^A-Za-z0-9]/)
-    .withMessage('Password must contain a special character'),
-
-  body('confirmPassword')
-    .custom((value, { req }) => {
-      if (value !== req.body.newPassword) {
-        throw new Error('Confirm password does not match new password');
-      }
-      return true;
-    }),
 ];
