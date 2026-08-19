@@ -1,0 +1,48 @@
+@import "./variables.css";
+@import "./animations.css";
+@import "./responsive.css";
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-width:320px;background:var(--color-background);color:var(--color-text-primary);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+body.menu-open{overflow:hidden}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+h1,h2,h3,h4,p{margin-top:0}
+h1,h2,h3{letter-spacing:-.025em}
+p{color:var(--color-text-secondary);line-height:1.7}
+:focus-visible{outline:3px solid rgba(73,192,242,.35);outline-offset:2px}
+.container{width:min(calc(100% - 32px),var(--container-max-width));margin-inline:auto}
+.page-section{padding:84px 0}
+.section-heading{max-width:730px;margin:0 auto 40px;text-align:center}
+.section-heading.left{margin-left:0;text-align:left}
+.section-kicker{display:inline-flex;align-items:center;gap:8px;color:var(--color-primary-deep);font-size:.78rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase;margin-bottom:11px}
+.section-title{font-size:clamp(2rem,4vw,3.3rem);line-height:1.08;margin-bottom:14px}
+.page-title{font-size:clamp(2.4rem,5vw,4rem);line-height:1.04;margin-bottom:16px}
+.grid{display:grid;gap:20px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.form-stack{display:grid;gap:16px}
+.full-span{grid-column:1/-1}
+.surface,.panel,.content-card{background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)}
+.panel,.content-card{padding:22px}
+.panel-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.panel-heading h2,.panel-heading h3{margin:0}
+.muted{color:var(--color-text-muted)}
+.flex{display:flex}.items-center{align-items:center}.justify-between{justify-content:space-between}
+.gap-8{gap:8px}.gap-12{gap:12px}.gap-16{gap:16px}
+.mt-16{margin-top:16px}.mt-24{margin-top:24px}.mt-32{margin-top:32px}.mb-24{margin-bottom:24px}
+.text-center{text-align:center}.w-full{width:100%}
+.action-row{display:flex;flex-wrap:wrap;gap:8px}
+.detail-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.detail-item{padding:14px;background:#F8FBFC;border-radius:12px}
+.detail-item small{display:block;color:var(--color-text-muted);margin-bottom:4px}
+.table-wrap{overflow:auto;background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-lg)}
+table{width:100%;min-width:760px;border-collapse:collapse}
+th,td{padding:14px 17px;border-bottom:1px solid var(--color-border);text-align:left}
+th{background:#F8FBFC;color:var(--color-text-muted);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
+tr:last-child td{border-bottom:0}

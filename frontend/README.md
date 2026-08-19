@@ -1,16 +1,54 @@
-# React + Vite
+# Hospital Management Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite frontend for the uploaded Hospital Management backend. It includes the public hospital website, authentication, patient portal, doctor portal, and admin portal.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React + Vite
+- React Router
+- Axios with one centralized instance
+- TanStack Query
+- React Hook Form + Zod
+- Motion
+- Lucide React
+- Sonner
+- Plain CSS with centralized CSS variables
 
-## React Compiler
+## Run
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+The included `.env` points to:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```env
+VITE_API_BASE_URL=http://localhost:5000/api/v1
+```
+
+Change it if your backend uses a different host or port.
+
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## API integration
+
+All HTTP requests pass through `src/api/axiosInstance.js`, endpoint paths live in `src/api/endpoints.js`, API calls live in `src/services/index.js`, and response normalization lives in `src/mappers/index.js`.
+
+See `src/api/API_CONTRACT.md` for the backend-verified API contract and known backend limitations.
+
+## Important backend limitations
+
+- Public `/doctors` only returns active doctors, so the admin doctor listing cannot recover deactivated doctors with the current backend API.
+- Some appointment detail endpoints return doctor/patient IDs rather than fully populated related records.
+- Contact form, testimonials, pharmacy, lab, billing, ward, and medical-record website content is static because no matching backend APIs were supplied.
+- Public registration creates patient accounts only.
+
+## Project specification
+
+The supplied original frontend brief is included as `PROJECT_SPECIFICATION.md` for reference.
