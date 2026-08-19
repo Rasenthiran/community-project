@@ -19,7 +19,7 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: process.env.CORS_ALLOWED_ORIGINS ? process.env.CORS_ALLOWED_ORIGINS.split(',') : [],
+    origin: true,
     credentials: true,
   })
 );
