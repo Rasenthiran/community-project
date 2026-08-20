@@ -13,4 +13,60 @@
 .home-cta{padding:44px;border-radius:30px;background:linear-gradient(135deg,var(--color-primary-light),#F8FDFF);border:1px solid rgba(73,192,242,.28);display:flex;justify-content:space-between;align-items:center;gap:26px}.home-cta h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:7px}.home-cta p{margin:0}
 .page-banner{padding:82px 0;position:relative;overflow:hidden;background:linear-gradient(135deg,#F7FCFF,var(--color-primary-soft))}.page-banner .container{position:relative;z-index:2;max-width:920px}.page-banner p{font-size:1.05rem;max-width:720px}.page-banner::after{content:"";position:absolute;width:330px;height:330px;border-radius:50%;right:-90px;top:-170px;background:rgba(73,192,242,.16)}
 .icon-card{padding:25px;background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-lg)}.icon-card__icon{width:47px;height:47px;border-radius:15px;background:var(--color-primary-soft);color:var(--color-primary-deep);display:grid;place-items:center;margin-bottom:17px}.icon-card p{margin-bottom:0}.doctor-toolbar{display:grid;grid-template-columns:1.5fr 1fr 1fr auto;gap:9px;margin-bottom:22px}.doctor-toolbar .field__label{display:none}
-@media(max-width:960px){.hero__grid{grid-template-columns:1fr}.hero{min-height:auto}.hero-visual{height:430px}.why-grid{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}}@media(max-width:720px){.hero__grid{padding:46px 0}.hero h1{font-size:clamp(2.8rem,13vw,4.2rem)}.hero-visual__core{width:245px;height:325px}.hero-visual{height:365px}.pulse-ring.r1{width:330px;height:330px}.pulse-ring.r2{width:390px;height:390px}.floating-card.top{left:0;top:50px}.floating-card.bottom{right:0;bottom:35px}.trust-grid{grid-template-columns:repeat(2,1fr)}.department-list,.steps,.doctor-toolbar{grid-template-columns:1fr}.home-cta{align-items:flex-start;flex-direction:column}}
+@media(max-width:720px) {
+  .hero__grid {
+    padding: 46px 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 13vw, 4.2rem);
+  }
+
+  .hero-visual__core {
+    width: 245px;
+    height: 325px;
+  }
+
+  .hero-visual {
+    height: 365px;
+  }
+
+  .pulse-ring.r1 {
+    width: 330px;
+    height: 330px;
+  }
+
+  .pulse-ring.r2 {
+    width: 390px;
+    height: 390px;
+  }
+
+  .floating-card.top {
+    left: 0;
+    top: 50px;
+  }
+
+  .floating-card.bottom {
+    right: 0;
+    bottom: 35px;
+  }
+
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .department-list,
+  .steps,
+  .doctor-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .home-cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
