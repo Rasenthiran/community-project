@@ -80,7 +80,7 @@ export function DoctorDetails() {
 
 export function Contact() {
   return <><PageBanner kicker="Contact" title="We’re here when you need direction." description="The backend has no contact-submission endpoint, so this form is intentionally frontend-only."/><section className="page-section"><div className="container grid grid-2">
-    <div className="content-card"><h2>Hospital contact</h2><p><MapPin size={16}/> 25 Wellness Avenue, Colombo</p><p><Phone size={16}/> +94 11 234 5678</p><p><Mail size={16}/> hello@novacare.lk</p></div>
+    <div className="content-card"><h2>Hospital contact</h2><p><MapPin size={16}/> Moddaikaddai, Nanattan, Mannar</p><p><Phone size={16}/> +94 11 234 5678</p><p><Mail size={16}/> hello@ngh.lk</p></div>
     <form className="content-card form-stack" onSubmit={e=>{e.preventDefault();toast.info("Contact submission is not connected to a backend yet.")}}><Input label="Name" required/><Input label="Email" type="email" required/><Textarea label="Message" required/><Button type="submit">Prepare Message</Button></form>
   </div></section></>;
 }
