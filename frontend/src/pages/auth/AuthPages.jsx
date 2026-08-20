@@ -23,7 +23,7 @@ export function Login() {
     } catch (e) { toast.error(getErrorMessage(e,"Invalid email or password.")); }
   };
   return <div className="auth-page"><form className="auth-card form-stack" onSubmit={handleSubmit(submit)}>
-    <div className="auth-head"><span className="section-kicker">Welcome back</span><h1>Sign in to NovaCare</h1><p>Access your secure hospital workspace.</p></div>
+    <div className="auth-head"><span className="section-kicker">Welcome back</span><h1>Sign in to Nanattan General Hospital</h1><p>Access your secure hospital workspace.</p></div>
     <Input label="Email" type="email" autoComplete="email" error={errors.email?.message} {...register("email")}/>
     <Input label="Password" type="password" autoComplete="current-password" error={errors.password?.message} {...register("password")}/>
     <Button type="submit" size="lg" disabled={isSubmitting}>{isSubmitting?"Signing in...":"Sign In"}</Button>

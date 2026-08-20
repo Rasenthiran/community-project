@@ -30,7 +30,7 @@ export default function Home() {
         </motion.div>
 
         <motion.div className="hero-visual" initial={{opacity:0,scale:.96}} animate={{opacity:1,scale:1}} transition={{delay:.12,duration:.65}}>
-          <div className="hero-visual__core"><div className="hero-symbol"><HeartPulse/></div><small>Care that moves with you</small><strong>NovaCare Hospital</strong></div>
+          <div className="hero-visual__core"><div className="hero-symbol"><HeartPulse/></div><small>Care that moves with you</small><strong>Nanattan General Hospital</strong></div>
           <div className="floating-card top float-soft"><CalendarCheck2/><div><small>Appointment access</small><strong>Simple & secure</strong></div></div>
           <div className="floating-card bottom"><Activity/><div><small>Hospital support</small><strong>24/7 Care</strong></div></div>
           <div className="pulse-ring r1"/><div className="pulse-ring r2"/>
@@ -59,7 +59,7 @@ export default function Home() {
     </div></section>
 
     <section className="page-section dark-section"><div className="container why-grid">
-      <div><span className="section-kicker">Why NovaCare</span><h2 className="section-title">A calmer digital front door to healthcare.</h2><p>Clear navigation, accessible interfaces, secure role-based access and backend-aware design keep the experience focused.</p></div>
+      <div><span className="section-kicker">Why Nanattan General Hospital</span><h2 className="section-title">A calmer digital front door to healthcare.</h2><p>Clear navigation, accessible interfaces, secure role-based access and backend-aware design keep the experience focused.</p></div>
       <div className="why-list">
         <div><Clock3/><span><strong>Faster appointment access</strong><small>Search, review and book without unnecessary steps.</small></span></div>
         <div><Stethoscope/><span><strong>Doctor-focused profiles</strong><small>See specialty, department, fees, languages and availability.</small></span></div>
