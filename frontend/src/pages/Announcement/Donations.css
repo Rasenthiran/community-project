@@ -1,0 +1,240 @@
+/* ===== Shared grid helper (2-col) ===== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+/* ===== Project cards ===== */
+.project-grid {
+  margin-top: 8px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.project-card__image {
+  height: 120px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #EAF8FE, #F7FDFF);
+  color: var(--color-primary-dark);
+}
+
+.project-card__body {
+  padding: 22px 24px 24px;
+}
+
+.project-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.project-card__body h3 {
+  margin-bottom: 8px;
+}
+
+.project-card__body p {
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: var(--color-warning);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.project-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ===== How donation works ===== */
+.donation-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.donation-step {
+  padding: 26px 22px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.donation-step__number {
+  display: inline-block;
+  color: var(--color-primary-dark);
+  font-weight: 900;
+  font-size: 1.15rem;
+  margin-bottom: 26px;
+}
+
+.donation-step h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.donation-step p {
+  font-size: 0.86rem;
+  margin: 0;
+}
+
+/* ===== Donation contact ===== */
+.donation-contact {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.donation-contact__intro h2 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  margin: 6px 0 10px;
+}
+
+.donation-contact__details {
+  display: grid;
+  gap: 14px;
+  padding: 26px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.donation-contact__details > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.donation-contact__label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.donation-contact__label svg {
+  color: var(--color-primary-dark);
+}
+
+.donation-contact__details strong {
+  font-size: 0.98rem;
+}
+
+/* ===== Bank transfer (optional) ===== */
+.bank-transfer-section {
+  padding-top: 0;
+}
+
+.bank-transfer-card {
+  padding: 28px;
+  background: #F1F7FA;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.bank-transfer-card h3 {
+  margin-bottom: 6px;
+}
+
+.bank-transfer-card__note {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-bottom: 18px;
+}
+
+.bank-transfer-card__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 0;
+}
+
+.bank-transfer-card__list dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.bank-transfer-card__list dd {
+  margin: 0;
+  font-weight: 800;
+  font-size: 0.92rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .donation-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .donation-contact {
+    grid-template-columns: 1fr;
+  }
+
+  .bank-transfer-card__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card__top {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .donation-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card__actions {
+    flex-direction: column;
+  }
+
+  .project-card__actions > * {
+    width: 100%;
+  }
+
+  .bank-transfer-card__list {
+    grid-template-columns: 1fr;
+  }
+
+  .donation-contact__details {
+    padding: 20px;
+  }
+}

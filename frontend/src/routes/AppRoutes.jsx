@@ -52,6 +52,11 @@ const AdminPassword = lazyNamed(() => import("../pages/portals/AdminPages"), "Ad
 const Unauthorized = lazyNamed(() => import("../pages/system/SystemPages"), "Unauthorized");
 const NotFound = lazyNamed(() => import("../pages/system/SystemPages"), "NotFound");
 
+
+//newly added announcement page
+const Announcements = lazy(() => import("../pages/Announcement/Announcements"), "Announcements");
+const Donations = lazy(() => import("../pages/Announcement/Donations"), "Donations");
+
 function Protected({ children }) {
   const { isAuthenticated, isBooting } = useAuth();
   const location = useLocation();
@@ -75,6 +80,9 @@ export default function AppRoutes() {
       <Routes>
         <Route element={<PublicLayout />}>
           <Route index element={<Home />} />
+          {/* newly added announcement and donation pages */}
+          <Route path="announcements" element={<Announcements />} />
+          <Route path="donations" element={<Donations />} />
           <Route path="about" element={<About />} />
           <Route path="services" element={<Services />} />
           <Route path="departments" element={<Departments />} />
