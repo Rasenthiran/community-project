@@ -8,7 +8,7 @@ import { Button } from "./common";
 import "./layouts.css";
 
 const publicLinks = [
-  ["Home","/"],["About","/about"],["Services","/services"],["Departments","/departments"],["Doctors","/doctors"],["Contact","/contact"],["Donate","/donate"],
+  ["Home","/"],["About","/about"],["Services","/services"],["Departments","/departments"],["Doctors","/doctors"],["Contact","/contact"],["Donate","/Donations"],
 ];
 
 export function Header() {
@@ -28,7 +28,7 @@ export function Header() {
         <Button
           variant="secondary"
           label="Announcement"
-          onClick={() => navigate("/announcement")}
+          onClick={() => navigate("/Announcements")}
         >
           <Bell/>
         </Button>
@@ -49,7 +49,7 @@ export function Header() {
           variant="secondary"
           onClick={() => {
             setOpen(false);
-            navigate("/announcement");
+            navigate("/Announcements");
           }}
         >
           <Bell/>
