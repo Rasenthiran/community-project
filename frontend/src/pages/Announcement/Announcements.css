@@ -1,0 +1,237 @@
+/* ===== Category filter ===== */
+.announcements-filter-section {
+  padding-top: 0;
+  padding-bottom: 8px;
+}
+
+.announcements-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.filter-chip {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  color: var(--color-text-secondary);
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.filter-chip:hover {
+  border-color: var(--color-primary-dark);
+  color: var(--color-primary-deep);
+}
+
+.filter-chip.active {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: #fff;
+}
+
+/* ===== Badges ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-deep);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+
+.badge--muted {
+  background: #F1F7FA;
+  color: var(--color-text-secondary);
+}
+
+/* ===== Featured announcement ===== */
+.featured-announcement {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 24px;
+  padding: 30px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.featured-announcement__icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 20px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-deep);
+  display: grid;
+  place-items: center;
+}
+
+.featured-announcement__body h2 {
+  margin-bottom: 12px;
+}
+
+.featured-announcement__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.featured-announcement__meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.featured-announcement__meta svg {
+  color: var(--color-primary-dark);
+}
+
+.featured-announcement__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* ===== Announcement cards ===== */
+.announcement-grid {
+  margin-top: 8px;
+}
+
+.announcement-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.announcement-card__image {
+  height: 108px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #EAF8FE, #F7FDFF);
+  color: var(--color-primary-dark);
+}
+
+.announcement-card__body {
+  padding: 20px 22px 22px;
+}
+
+.announcement-card__body h3 {
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+}
+
+.announcement-card__date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+}
+
+.announcement-card__body p {
+  font-size: 0.88rem;
+  margin-bottom: 12px;
+}
+
+.text-link {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  text-decoration: none;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+/* ===== Upcoming activities timeline ===== */
+.activity-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.activity-timeline li {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 15px;
+}
+
+.activity-timeline__date {
+  font-weight: 800;
+  color: var(--color-primary-deep);
+  font-size: 0.85rem;
+}
+
+.activity-timeline__label {
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .featured-announcement {
+    grid-template-columns: 72px 1fr;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-announcement {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-announcement__icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .activity-timeline li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-chip {
+    padding: 8px 13px;
+    font-size: 0.78rem;
+  }
+
+  .featured-announcement {
+    padding: 18px;
+  }
+
+  .featured-announcement__actions {
+    flex-direction: column;
+  }
+
+  .featured-announcement__actions > * {
+    width: 100%;
+  }
+}
