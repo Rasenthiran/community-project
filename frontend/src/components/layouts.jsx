@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Activity, LogIn, LogOut, Menu, X } from "lucide-react";
+import { Activity, LogIn, LogOut, Menu, X, Bell } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { Link, NavLink, Outlet, useNavigate } from "react-router";
 import { useAuth } from "../hooks/useAuth";
@@ -8,7 +8,7 @@ import { Button } from "./common";
 import "./layouts.css";
 
 const publicLinks = [
-  ["Home","/"],["About","/about"],["Services","/services"],["Departments","/departments"],["Doctors","/doctors"],["Contact","/contact"],
+  ["Home","/"],["About","/about"],["Services","/services"],["Departments","/departments"],["Doctors","/doctors"],["Contact","/contact"],["Donate","/Donations"],
 ];
 
 export function Header() {
@@ -25,6 +25,13 @@ export function Header() {
       <Link className="brand" to="/"><span className="brand__mark"><Activity/></span><strong>Nanattan General Hospital</strong></Link>
       <nav className="desktop-nav">{publicLinks.map(([label,to])=><NavLink key={to} to={to} className={({isActive})=>isActive?"active":""}>{label}</NavLink>)}</nav>
       <div className="desktop-actions">
+        <Button
+          variant="secondary"
+          label="Announcement"
+          onClick={() => navigate("/Announcements")}
+        >
+          <Bell/>
+        </Button>
         {isAuthenticated ? <>
           <Button variant="secondary" onClick={()=>navigate(dashboard)}>Dashboard</Button>
           <Button variant="ghost" onClick={()=>{logout();navigate("/")}}>Logout</Button>
@@ -38,6 +45,15 @@ export function Header() {
     <AnimatePresence>{open && <motion.div className="mobile-nav" initial={{opacity:0,y:-12}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-12}}>
       {publicLinks.map(([label,to])=><NavLink key={to} to={to} onClick={()=>setOpen(false)}>{label}</NavLink>)}
       <div className="mobile-nav__actions">
+        <Button
+          variant="secondary"
+          onClick={() => {
+            setOpen(false);
+            navigate("/Announcements");
+          }}
+        >
+          <Bell/>
+        </Button>
         {isAuthenticated ? <>
           <Button onClick={()=>{setOpen(false);navigate(dashboard)}}>Dashboard</Button>
           <Button variant="secondary" onClick={()=>{logout();setOpen(false);navigate("/")}}>Logout</Button>
